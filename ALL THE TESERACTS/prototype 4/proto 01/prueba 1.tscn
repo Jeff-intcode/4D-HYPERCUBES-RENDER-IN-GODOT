@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://5jneowcccuk1"]
+
+[ext_resource type="Script" path="res://proto 01/prueba 1.gd" id="1_bxcw3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e1ta7"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_r0wwt"]
+sky_material = SubResource("ProceduralSkyMaterial_e1ta7")
+
+[sub_resource type="Environment" id="Environment_cbjkh"]
+background_mode = 2
+sky = SubResource("Sky_r0wwt")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_jgnew"]
+
+[sub_resource type="Gradient" id="Gradient_bv6ei"]
+colors = PackedColorArray(0.148612, 0, 0.971999, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rkncr"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4oh20"]
+color_ramp = SubResource("Gradient_bv6ei")
+noise = SubResource("FastNoiseLite_rkncr")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_piqyi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wce4p"]
+cull_mode = 2
+diffuse_mode = 1
+albedo_color = Color(0, 0, 0.85098, 1)
+albedo_texture = SubResource("NoiseTexture2D_4oh20")
+metallic_specular = 0.0
+metallic_texture = SubResource("CurveXYZTexture_piqyi")
+emission_enabled = true
+emission = Color(0.784314, 0, 0, 1)
+emission_energy_multiplier = 0.35
+emission_on_uv2 = true
+point_size = 33.3
+use_particle_trails = true
+distance_fade_mode = 3
+distance_fade_min_distance = 109.71
+distance_fade_max_distance = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5i78q"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_bxcw3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cbjkh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.99879, 0.0489009, 0.00531078, 0.00299393, -0.0473303, 0.998875, 0.0490972, 0.997682, 0.0471266, 0, 3.36807, 0)
+light_energy = 16.0
+light_negative = true
+shadow_enabled = true
+shadow_bias = 3.683
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+sorting_offset = 5.0
+gi_mode = 2
+gi_lightmap_scale = 2
+mesh = SubResource("BoxMesh_jgnew")
+surface_material_override/0 = SubResource("StandardMaterial3D_wce4p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5i78q")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(-0.0272717, -0.639111, 0.768631, 0.0392401, 0.76764, 0.639679, -0.998858, 0.0476063, 0.00414393, 11.8228, 7.29664, 0.0619321)
+current = true

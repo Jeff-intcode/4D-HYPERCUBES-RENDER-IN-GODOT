@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://5jneowcccuk1"]
+
+[ext_resource type="Script" path="res://prueba 1.gd" id="1_fmme8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e1ta7"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_r0wwt"]
+sky_material = SubResource("ProceduralSkyMaterial_e1ta7")
+
+[sub_resource type="Environment" id="Environment_cbjkh"]
+background_mode = 2
+sky = SubResource("Sky_r0wwt")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_jgnew"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5i78q"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_fmme8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cbjkh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jgnew")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5i78q")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(-0.0272717, -0.639111, 0.768631, 0.0392401, 0.76764, 0.639679, -0.998858, 0.0476063, 0.00414399, 11.8228, 7.29664, 0.0619321)
+current = true

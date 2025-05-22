@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=3 uid="uid://cttrredrqa8u"]
+
+[ext_resource type="Script" path="res://proto 0/node_3d.gd" id="1_pu76c"]
+[ext_resource type="Script" path="res://otros/MeshInstance3D.gd" id="2_2xxrl"]
+[ext_resource type="Texture2D" uid="uid://brfacpq0ouvtr" path="res://otros/fondo.png" id="2_st730"]
+[ext_resource type="PackedScene" uid="uid://5jneowcccuk1" path="res://proto 01/prueba 1.tscn" id="4_8p4qa"]
+[ext_resource type="PackedScene" uid="uid://b25i11j1mcl6v" path="res://otros/espacio.tscn" id="5_evxb8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yg4"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_p4nep"]
+sky_material = SubResource("ProceduralSkyMaterial_85yg4")
+
+[sub_resource type="Environment" id="Environment_5kdjm"]
+background_mode = 2
+sky = SubResource("Sky_p4nep")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_hmmo4"]
+
+[sub_resource type="Skin" id="Skin_axpvr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpdob"]
+blend_mode = 1
+cull_mode = 1
+depth_draw_mode = 1
+no_depth_test = true
+emission_enabled = true
+emission = Color(0.00501154, 0.0349383, 0, 1)
+emission_energy_multiplier = 10.67
+emission_on_uv2 = true
+emission_texture = ExtResource("2_st730")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_pu76c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5kdjm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1159, 4.66806, 11.9133)
+mesh = SubResource("BoxMesh_hmmo4")
+skin = SubResource("Skin_axpvr")
+surface_material_override/0 = SubResource("StandardMaterial3D_hpdob")
+script = ExtResource("2_2xxrl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("4_8p4qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.126208, 13.9048, 2.50835)
+
+[node name="espacio" parent="." instance=ExtResource("5_evxb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.135851, 0, 3.13168)

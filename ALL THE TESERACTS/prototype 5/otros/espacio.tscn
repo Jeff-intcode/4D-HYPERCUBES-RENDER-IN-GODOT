@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b25i11j1mcl6v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7byej"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_2mbrx"]
+sky_material = SubResource("ProceduralSkyMaterial_7byej")
+
+[sub_resource type="Environment" id="Environment_fh6xh"]
+background_mode = 2
+sky = SubResource("Sky_2mbrx")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_e62o0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0wmr8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhmr5"]
+metallic = 1.0
+metallic_texture = SubResource("NoiseTexture2D_0wmr8")
+roughness = 0.12
+
+[node name="espacio" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fh6xh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.58413, 0, 0, 0, -0.0206164, 0.740613, 0, -12.3043, -0.00124092, 0, 0, 0)
+mesh = SubResource("QuadMesh_e62o0")
+surface_material_override/0 = SubResource("StandardMaterial3D_qhmr5")

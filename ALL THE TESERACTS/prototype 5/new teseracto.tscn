@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://f7fwbkipsadb"]
+
+[ext_resource type="Script" path="res://new teseracto.gd" id="1_2ys4q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n12dy"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_xeqoj"]
+sky_material = SubResource("ProceduralSkyMaterial_n12dy")
+
+[sub_resource type="Environment" id="Environment_i8acb"]
+background_mode = 2
+sky = SubResource("Sky_xeqoj")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rul44"]
+_surfaces = [{
+"aabb": AABB(-2, -2, -2, 4, 4, 4),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"format": 34359742485,
+"index_count": 120,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 0, 0, 1, 0, 5, 0, 5, 0, 4, 0, 0, 0, 2, 0, 3, 0, 7, 0, 7, 0, 6, 0, 2, 0, 0, 0, 3, 0, 7, 0, 7, 0, 4, 0, 0, 0, 1, 0, 2, 0, 6, 0, 6, 0, 5, 0, 1, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0, 8, 0, 9, 0, 13, 0, 13, 0, 12, 0, 8, 0, 10, 0, 11, 0, 15, 0, 15, 0, 14, 0, 10, 0, 8, 0, 11, 0, 15, 0, 15, 0, 12, 0, 8, 0, 9, 0, 10, 0, 14, 0, 14, 0, 13, 0, 9, 0, 0, 0, 1, 0, 9, 0, 9, 0, 8, 0, 0, 0, 2, 0, 3, 0, 11, 0, 11, 0, 10, 0, 2, 0, 4, 0, 5, 0, 13, 0, 13, 0, 12, 0, 4, 0, 6, 0, 7, 0, 15, 0, 15, 0, 14, 0, 6, 0, 0, 0, 3, 0, 11, 0, 11, 0, 8, 0, 0, 0, 1, 0, 2, 0, 10, 0, 10, 0, 9, 0, 1, 0, 4, 0, 7, 0, 15, 0, 15, 0, 12, 0, 4, 0, 5, 0, 6, 0, 14, 0, 14, 0, 13, 0, 5, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(171, 170, 42, 191, 171, 170, 42, 191, 171, 170, 42, 191, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 0, 192, 171, 170, 42, 63, 171, 170, 42, 191, 171, 170, 42, 191, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 0, 192, 171, 170, 42, 63, 171, 170, 42, 63, 171, 170, 42, 191, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 0, 192, 171, 170, 42, 191, 171, 170, 42, 63, 171, 170, 42, 191, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 0, 192, 171, 170, 42, 191, 171, 170, 42, 191, 171, 170, 42, 63, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 0, 64, 171, 170, 42, 63, 171, 170, 42, 191, 171, 170, 42, 63, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 0, 64, 171, 170, 42, 63, 171, 170, 42, 63, 171, 170, 42, 63, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 0, 64, 171, 170, 42, 191, 171, 170, 42, 63, 171, 170, 42, 63, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 0, 64, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191)
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5jgb"]
+albedo_color = Color(7.70092e-07, 0.740234, 0.447912, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 0.14
+normal_enabled = true
+clearcoat_enabled = true
+point_size = 54.9
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gb77s"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+wall_min_slide_angle = 0.0
+script = ExtResource("1_2ys4q")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i8acb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+extra_cull_margin = 14074.5
+lod_bias = 128.0
+ignore_occlusion_culling = true
+mesh = SubResource("ArrayMesh_rul44")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_k5jgb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gb77s")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.94783, 0.318778, 0, -0.318778, 0.94783, 0.00853515, 3.09301, 7.19914)

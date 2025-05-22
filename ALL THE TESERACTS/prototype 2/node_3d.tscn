@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://cttrredrqa8u"]
+
+[ext_resource type="Script" path="res://node_3d.gd" id="1_pu76c"]
+[ext_resource type="Script" path="res://MeshInstance3D.gd" id="2_2xxrl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85yg4"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_p4nep"]
+sky_material = SubResource("ProceduralSkyMaterial_85yg4")
+
+[sub_resource type="Environment" id="Environment_5kdjm"]
+background_mode = 2
+sky = SubResource("Sky_p4nep")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_hmmo4"]
+
+[sub_resource type="Skin" id="Skin_axpvr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpdob"]
+emission_enabled = true
+emission = Color(0.218929, 0.560213, 0, 1)
+
+[sub_resource type="Environment" id="Environment_ujvp6"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_pu76c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5kdjm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hmmo4")
+skin = SubResource("Skin_axpvr")
+surface_material_override/0 = SubResource("StandardMaterial3D_hpdob")
+script = ExtResource("2_2xxrl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 1.24345e-13, 1.50996e-07, 1.49786e-07, 0.126338, 0.991987, -1.90764e-08, 0.991987, -0.126338, -0.0348723, 6.21844, 0.0195136)
+environment = SubResource("Environment_ujvp6")
+current = true
